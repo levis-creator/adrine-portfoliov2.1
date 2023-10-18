@@ -1,0 +1,18 @@
+export const aboutData = [
+  {
+    id: 1,
+        title: "what i do",
+    image:"/assets/leone-venter-VieM9BdZKFo-unsplash.jpg",
+    heading: "Virtual Assistant. Content Creator. Time Saver",
+    body: "<div className='space-y-4 text-left'><h2 className='text-3xl font-serif text-slate-600 '>Virtual Assistant. Content Creator. Time Saver.</h2> <div className= 'space-y-3'> <h3 className='uppercase font-bold text-lg text-slate-700'> The mission</h3><p className='font-serif text-slate-700 '>Driven by innovation and efficiency, my mission as a Virtual Assistant and Technical Admin is to provide top-tier, personalized administrative and technical support to my clients. I aim to streamline operations, enhance productivity, and foster growth by leveraging advanced technology and AI capabilities. My commitment is to deliver reliable, timely, and professional services, ensuring our clients can focus on their core business objectives while we handle the complexities of their technical and administrative needs. </p> </div> <div className='pt-7 space-y-3'> <h3 className='uppercase font-bold text-lg text-slate-700'> Why Adrine? </h3> <p className='font-serif text-slate-700'> As your virtual and technical assistant, I bring a unique blend of AI-powered capabilities and a commitment to efficiency. I can handle a wide range of tasks, from managing your schedule to answering technical queries, conducting research, and performing complex calculations. I'm available 24/7, ensuring that you have support whenever you need it. My ability to learn and adapt to your preferences over time makes me a personalized assistant that can cater to your specific needs. Furthermore, I can handle multiple tasks simultaneously, reducing your workload and allowing you to focus on what matters most. </p> </div> </div>",
+  
+    },
+    {
+        id: 1,
+            title: "what i do",
+        image:"/assets/leone-venter-VieM9BdZKFo-unsplash.jpg",
+        heading: "Virtual Assistant. Content Creator. Time Saver",
+        body: "<div className='space-y-4 text-left'><h2 className='text-3xl font-serif text-slate-600 '>Virtual Assistant. Content Creator. Time Saver.</h2> <div className= 'space-y-3'> <h3 className='uppercase font-bold text-lg text-slate-700'> The mission</h3><p className='font-serif text-slate-700 '>Driven by innovation and efficiency, my mission as a Virtual Assistant and Technical Admin is to provide top-tier, personalized administrative and technical support to my clients. I aim to streamline operations, enhance productivity, and foster growth by leveraging advanced technology and AI capabilities. My commitment is to deliver reliable, timely, and professional services, ensuring our clients can focus on their core business objectives while we handle the complexities of their technical and administrative needs. </p> </div> <div className='pt-7 space-y-3'> <h3 className='uppercase font-bold text-lg text-slate-700'> Why Adrine? </h3> <p className='font-serif text-slate-700'> As your virtual and technical assistant, I bring a unique blend of AI-powered capabilities and a commitment to efficiency. I can handle a wide range of tasks, from managing your schedule to answering technical queries, conducting research, and performing complex calculations. I'm available 24/7, ensuring that you have support whenever you need it. My ability to learn and adapt to your preferences over time makes me a personalized assistant that can cater to your specific needs. Furthermore, I can handle multiple tasks simultaneously, reducing your workload and allowing you to focus on what matters most. </p> </div> </div>",
+      
+        },
+];
