@@ -1,6 +1,7 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import { homePage } from "@/lib/pageApi";
+import { AboutTemplate } from "@/templates/AboutTemplate";
 import _ from "lodash";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -66,7 +67,9 @@ export default function Home() {
 
 const InfoSection = ({ data, reverse }) => {
   return (
-    <div className={`p-5 pt-8 space-y-4 flex flex-col items-center sm:flex-row sm:even:flex-row-reverse`}>
+    <div
+      className={`p-5 pt-8 space-y-4 flex flex-col items-center sm:flex-row sm:even:flex-row-reverse`}
+    >
       <div className="basis-1/2">
         <Image
           width={0}
@@ -77,6 +80,7 @@ const InfoSection = ({ data, reverse }) => {
           unoptimized
         />
       </div>
+
       <div className="flex flex-col items-center gap-5 basis-1/2">
         <div className="text-center space-y-3 ">
           <h2 className="uppercase text-slate-400 text-sm font-semibold">

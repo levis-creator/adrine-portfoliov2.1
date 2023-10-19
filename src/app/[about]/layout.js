@@ -1,9 +1,9 @@
-import React from 'react'
+"use client";
+import Template from "./template";
+import { useParams } from "next/navigation";
 
-const Layout = ({children}) => {
-  return (
-    <div>{children}</div>
-  )
-}
+const Layout = ({ children }) => {
+  return <>{children}</>;
+};
 
-export default Layout
+export default Layout;

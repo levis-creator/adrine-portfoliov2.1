@@ -1,9 +1,11 @@
 "use client";
 import { menulist } from "@/data/menuitems";
 import { aboutPage } from "@/lib/pageApi";
+import { AboutTemplate } from "@/templates/AboutTemplate";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -20,9 +22,11 @@ function Page() {
   const renderAsset = (node, children) => {
     return (
       <Image
-      src={`https://${node.data.target.fields.file.url}`}        height={node.data.target.fields.file.details.image.height}
+        src={`https://${node.data.target.fields.file.url}`}
+        height={node.data.target.fields.file.details.image.height}
         width={node.data.target.fields.file.details.image.width}
         alt={node.data.target.fields.description}
+        className="w-full sm:h-72 sm:w-auto sm:float-left pr-3 mx-auto sm:mx-0"
       />
     );
   };
@@ -30,10 +34,12 @@ function Page() {
   const richtext_options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <p className=" font-serif text-slate-800 pb-5 leading-relaxed">{children}</p>
+        <p className=" font-serif text-slate-800 pb-5 leading-relaxed">
+          {children}
+        </p>
       ),
       [BLOCKS.HEADING_2]: (node, children) => (
-        <h2 className="font-serif text-2xl font-light text-slate-800 sm:text-3xl">
+        <h2 className="font-serif text-2xl font-light text-slate-800 sm:text-3xl ">
           {children}
         </h2>
       ),
@@ -42,7 +48,7 @@ function Page() {
           {children}
         </h4>
       ),
-      [BLOCKS.HR]:(node,children)=>(<hr className="my-10 sm:hidden"/>),
+      [BLOCKS.HR]: (node, children) => <hr className="my-10 sm:hidden" />,
       [BLOCKS.EMBEDDED_ASSET]: renderAsset,
     },
   };
@@ -93,34 +99,36 @@ function Page() {
           </h2>
         </div>
       </div>
-      <div className="w-full py-8 flex flex-row-reverse justify-between items-start px-4">
+      <div className="sm:hidden w-full py-8 flex flex-row-reverse justify-between items-start px-4">
         <div
-          className="w-full flex justify-end  text-xl font-extralight cursor-pointer "
+          className=" flex justify-end  text-xl font-extralight cursor-pointer "
           onClick={() => sethideItems(!hideItem)}
         >
           +
         </div>
-        {console.log(aboutContent)}
         {!hideItem && (
           <ul className="w-full">
             {_.map(menuItems, (item) => (
               <li key={item.id} className="uppercase">
+                <Link href={item.path}>
                 {item.item}
+                </Link>
               </li>
             ))}
           </ul>
         )}
       </div>
-
-      <div className="px-4 flex flex-col items-center gap-5 ">
-        {/* //TODO add richtext to mark down */}
-        <div>
-          {documentToReactComponents(aboutContent.body, richtext_options)}
+      <AboutTemplate>
+        <div className="px-4 flex flex-col items-center gap-5">
+          {/* //TODO add richtext to mark down */}
+          <div>
+            {documentToReactComponents(aboutContent.body, richtext_options)}
+          </div>
+          <button className="uppercase px-5 py-3 bg-black text-white rounded-3xl w-fit">
+            tell me more
+          </button>
         </div>
-        <button className="uppercase px-5 py-3 bg-black text-white rounded-3xl w-fit">
-          tell me more
-        </button>
-      </div>
+      </AboutTemplate>
     </div>
   );
 }

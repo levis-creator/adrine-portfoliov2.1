@@ -93,7 +93,7 @@ const MenuModal = ({ open, close }) => {
               })}
               <li>
                 <button className="uppercase border-2 border-black p-2">
-                  Let's work together
+                  Let&lsquo;s work together
                 </button>
               </li>
             </ul>
