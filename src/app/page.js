@@ -32,19 +32,19 @@ export default function Home() {
       setImage(result.fields.homePagePicture.fields.file.url);
     });
   }, []);
-  //TODO Add router checker
+
   return (
     <main className="">
-      <div className="">
+      <div className="md:flex">
         <Image
           width={0}
           height={0}
-          className="w-full h-auto"
+          className="w-full h-auto md:basis-1/2"
           alt="image of adrine"
           unoptimized
           src={image}
         />
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center basis-1/2">
           <div className="p-4 text-center space-y-4">
             <h2 className="font-bold text-lg text-slate-800">
               {homeData.homePageTitle}

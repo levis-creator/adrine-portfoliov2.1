@@ -26,7 +26,7 @@ export const menulist = [
       {
         id:3,
         item: "contact",
-        path:"/contact"
+        path:"/contact-me"
       },
     ],
   },

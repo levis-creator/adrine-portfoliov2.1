@@ -26,6 +26,7 @@ function Page() {
         height={node.data.target.fields.file.details.image.height}
         width={node.data.target.fields.file.details.image.width}
         alt={node.data.target.fields.description}
+        unoptimized
         className="w-full sm:h-72 sm:w-auto sm:float-left pr-3 mx-auto sm:mx-0"
       />
     );
@@ -94,7 +95,7 @@ function Page() {
           unoptimized
         />
         <div className="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center">
-          <h2 className="font-semibold uppercase text-lg ">
+          <h2 className="font-semibold uppercase text-lg text-white ">
             {aboutContent.title}
           </h2>
         </div>
@@ -134,3 +135,5 @@ function Page() {
 }
 
 export default Page;
+// TODO create contact form
+// TODO link all the buttons to its proper routes

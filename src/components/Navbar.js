@@ -31,7 +31,7 @@ const Navbar = () => {
               unoptimized
             />
           </Link>
-          <button onClick={handleMenu} className="text-gray-600">
+          <button onClick={handleMenu} className="text-gray-600 text-2xl">
             <FiMenu />
           </button>
         </div>
