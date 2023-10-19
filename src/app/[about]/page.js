@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import Loading from "../loading";
 
 function Page() {
   let listitem = _.filter(menulist, (list) => list.item == "About");
@@ -19,6 +20,7 @@ function Page() {
   const extPath = pathname.substring(1).split("-").join(" ").toLowerCase();
   const [aboutContent, setAboutContent] = useState([]);
   const [themeImage, setThemeImage] = useState("");
+  const [loading, setLoading] = useState(true);
   const renderAsset = (node, children) => {
     return (
       <Image
@@ -76,6 +78,7 @@ function Page() {
           aboutPage(pathname.substring(1)).then((res) => {
             setcheckPath2(true);
             setThemeImage(res.items[0].fields.themeImage.fields.file.url);
+            setLoading(false);
             return setAboutContent(res.items[0].fields);
           });
         }
@@ -84,56 +87,58 @@ function Page() {
   }, [listitem, pathname, checkPath2]);
 
   return (
-    <div>
-      <div className="relative z-0">
-        <Image
-          width={0}
-          height={0}
-          alt={aboutContent.title}
-          src={themeImage}
-          className="w-full h-auto sm:h-36 object-cover"
-          unoptimized
-        />
-        <div className="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center">
-          <h2 className="font-semibold uppercase text-lg text-white ">
-            {aboutContent.title}
-          </h2>
-        </div>
-      </div>
-      <div className="sm:hidden w-full py-8 flex flex-row-reverse justify-between items-start px-4">
-        <div
-          className=" flex justify-end  text-xl font-extralight cursor-pointer "
-          onClick={() => sethideItems(!hideItem)}
-        >
-          +
-        </div>
-        {!hideItem && (
-          <ul className="w-full">
-            {_.map(menuItems, (item) => (
-              <li key={item.id} className="uppercase">
-                <Link href={item.path}>
-                {item.item}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <AboutTemplate>
-        <div className="px-4 flex flex-col items-center gap-5">
-          {/* //TODO add richtext to mark down */}
-          <div>
-            {documentToReactComponents(aboutContent.body, richtext_options)}
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div>
+          <div className="relative z-0">
+            <Image
+              width={0}
+              height={0}
+              alt={aboutContent.title}
+              src={themeImage}
+              className="w-full h-auto sm:h-36 object-cover"
+              unoptimized
+            />
+            <div className="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center">
+              <h2 className="font-semibold uppercase text-lg text-white ">
+                {aboutContent.title}
+              </h2>
+            </div>
           </div>
-          <button className="uppercase px-5 py-3 bg-black text-white rounded-3xl w-fit">
-            tell me more
-          </button>
+          <div className="sm:hidden w-full py-8 flex flex-row-reverse justify-between items-start px-4">
+            <div
+              className=" flex justify-end  text-xl font-extralight cursor-pointer "
+              onClick={() => sethideItems(!hideItem)}
+            >
+              +
+            </div>
+            {!hideItem && (
+              <ul className="w-full">
+                {_.map(menuItems, (item) => (
+                  <li key={item.id} className="uppercase">
+                    <Link href={item.path}>{item.item}</Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <AboutTemplate>
+            <div className="px-4 flex flex-col items-center gap-5">
+              <div>
+                {documentToReactComponents(aboutContent.body, richtext_options)}
+              </div>
+              <button className="uppercase px-5 py-3 bg-black text-white rounded-3xl w-fit">
+                tell me more
+              </button>
+            </div>
+          </AboutTemplate>
         </div>
-      </AboutTemplate>
-    </div>
+      )}
+    </>
   );
 }
 
 export default Page;
 // TODO create contact form
-// TODO link all the buttons to its proper routes

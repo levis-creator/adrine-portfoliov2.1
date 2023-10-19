@@ -8,7 +8,7 @@ export const homePage = async () => {
     console.error(error);
   }
 };
-//TODO Add about page fetcher
+
 export const aboutPage = async (slug) => {
   try {
     const entries = await client.getEntries({

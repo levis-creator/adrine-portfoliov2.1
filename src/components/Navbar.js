@@ -10,28 +10,59 @@ import { menulist } from "@/data/menuitems";
 import Link from "next/link";
 const Navbar = () => {
   const [isOpen, setIsopen] = useState(false);
+  const [openPopup, setOpenPopup] = useState(false);
   const handleMenu = () => {
     setIsopen(true);
   };
   const handleClose = () => {
     setIsopen(false);
   };
+  const handlePopup = () => {
+    setOpenPopup(!openPopup);
+    setTimeout(() => {
+      setOpenPopup(false);
+    }, 4000);
+  };
   return (
     <header>
       <MenuModal open={isOpen} close={handleClose} />
-      <nav className="px-3 py-4 bg-white shadow-sm">
-        <div className="flex justify-between">
+      <nav className="px-3 py-4 bg-white shadow-sm lg:px-6">
+        <div className="flex justify-between items-center">
           <Link href="/">
             <Image
               src="/assets/logo.png"
               alt="logo"
               width={0}
               height={0}
-              className="h-8 w-auto"
+              className="h-8 lg:h-12 w-auto"
               unoptimized
             />
           </Link>
-          <button onClick={handleMenu} className="text-gray-600 text-2xl">
+          <ul className="hidden lg:flex uppercase font-semibold justify-between gap-6">
+            {_.map(menulist, (navItem) => (
+              <li key={navItem.id} className="relative">
+                <Link
+                  href={!_.isArray(navItem.path) ? navItem.path : ""}
+                  aria-expanded={_.isArray(navItem.path) ? true : ""}
+                  aria-haspopup={_.isArray(navItem.path) ? true : ""}
+                  id={_.isArray(navItem.path) ? "about" : ""}
+                  onClick={_.isArray(navItem.path) ? handlePopup : ""}
+                >
+                  {navItem.item}
+                  {_.isArray(navItem.path) && (
+                    <PopUp
+                      data={_.isArray(navItem.path) ? navItem.path : ""}
+                      isOpen={openPopup}
+                    />
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={handleMenu}
+            className="text-gray-600 text-2xl lg:hidden"
+          >
             <FiMenu />
           </button>
         </div>
@@ -96,6 +127,33 @@ const MenuModal = ({ open, close }) => {
                   Let&lsquo;s work together
                 </button>
               </li>
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+const PopUp = ({ data, isOpen }) => {
+  return (
+    <>
+      {isOpen && (
+        <div
+          className="absolute bg-white p-2 shadow-md rounded-md w-32 z-20"
+          role="menu"
+          aria-labelledby="about"
+          aria-orientation="vertical"
+          tabIndex="-1"
+        >
+          <div role="none">
+            <ul>
+              {_.map(data, (item) => (
+                <li key={item.id} className="hover:border  w-full">
+                  <Link href={item.path} className="text-sm ">
+                    {item.item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
