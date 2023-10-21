@@ -1,7 +1,7 @@
 function Footer() {
   return (
-    <footer class="flex flex-col space-y-10 justify-center  bg-gray-800 py-10 text-white">
-      <div class="flex justify-center space-x-5">
+    <footer className="flex flex-col space-y-10 justify-center  bg-gray-800 py-10 text-white">
+      <div className="flex justify-center space-x-5">
         {/* <div
           href="https://facebook.com"
           target="_blank"
@@ -38,7 +38,7 @@ function Footer() {
           <img src="https://img.icons8.com/fluent/30/000000/twitter.png" />
         </div> */}
       </div>
-      <p class="text-center text-white font-medium">
+      <p className="text-center text-white font-medium">
         &copy; 2022 Company Ltd. All rights reservered.
       </p>
     </footer>

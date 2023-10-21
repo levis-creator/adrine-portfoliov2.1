@@ -1,4 +1,5 @@
 "use client";
+import ContactForm from "@/components/ContactForm";
 import { menulist } from "@/data/menuitems";
 import { aboutPage } from "@/lib/pageApi";
 import { AboutTemplate } from "@/templates/AboutTemplate";
@@ -6,7 +7,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import Loading from "../loading";
 
@@ -21,6 +22,8 @@ function Page() {
   const [aboutContent, setAboutContent] = useState([]);
   const [themeImage, setThemeImage] = useState("");
   const [loading, setLoading] = useState(true);
+  const route = useParams();
+
   const renderAsset = (node, children) => {
     return (
       <Image
@@ -86,6 +89,19 @@ function Page() {
     }
   }, [listitem, pathname, checkPath2]);
 
+  const dynaButton = (path) => {
+    switch (path) {
+      case "what-i-do":
+        return <DynamicButton buttonName="Services" link="services" />;
+        break;
+      case "meet-adrine":
+        return <DynamicButton buttonName="How can i help?" link="contact-me" />;
+        break;
+      default:
+        return " ";
+        break;
+    }
+  };
   return (
     <>
       {loading ? (
@@ -128,10 +144,9 @@ function Page() {
             <div className="px-4 flex flex-col items-center gap-5">
               <div>
                 {documentToReactComponents(aboutContent.body, richtext_options)}
+                {route.about == "contact-me" ? <ContactForm /> : " "}
               </div>
-              <button className="uppercase px-5 py-3 bg-black text-white rounded-3xl w-fit">
-                tell me more
-              </button>
+              {dynaButton(route.about)}
             </div>
           </AboutTemplate>
         </div>
@@ -139,6 +154,21 @@ function Page() {
     </>
   );
 }
+const DynamicButton = ({ buttonName, link }) => {
+  return (
+    <>
+      <Link href={`/${link}`}>
+        <button className="uppercase px-5 py-3 bg-black text-white rounded-3xl w-fit">
+          {buttonName}
+        </button>
+      </Link>
+    </>
+  );
+};
 
 export default Page;
-// TODO create contact form
+
+
+//TODO add skeleton  image
+//TODO add service and blog  page
+// TODO add a buttom image section in contentful

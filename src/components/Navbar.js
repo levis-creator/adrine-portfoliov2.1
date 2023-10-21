@@ -38,7 +38,7 @@ const Navbar = () => {
               unoptimized
             />
           </Link>
-          <ul className="hidden lg:flex uppercase font-semibold justify-between gap-6">
+          <ul className="hidden lg:flex uppercase font-semibold justify-between gap-6 items-center">
             {_.map(menulist, (navItem) => (
               <li key={navItem.id} className="relative">
                 <Link
@@ -58,6 +58,9 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li>
+              <DiscoveryCall />
+            </li>
           </ul>
           <button
             onClick={handleMenu}
@@ -123,9 +126,7 @@ const MenuModal = ({ open, close }) => {
                 }
               })}
               <li>
-                <button className="uppercase border-2 border-black p-2">
-                  Let&lsquo;s work together
-                </button>
+                <DiscoveryCall />
               </li>
             </ul>
           </div>
@@ -161,5 +162,17 @@ const PopUp = ({ data, isOpen }) => {
     </>
   );
 };
-
+const DiscoveryCall = () => {
+  return (
+    <>
+      <Link
+        href={"https://calendly.com/adrinengikungu/adrine-s-discovery-callI"}
+      >
+        <button className="uppercase border-2 border-black p-2">
+          book a discovery call
+        </button>
+      </Link>
+    </>
+  );
+};
 export default Navbar;

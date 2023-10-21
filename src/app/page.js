@@ -1,7 +1,5 @@
 "use client";
-import Navbar from "@/components/Navbar";
 import { homePage } from "@/lib/pageApi";
-import { AboutTemplate } from "@/templates/AboutTemplate";
 import _ from "lodash";
 import Image from "next/image";
 import Link from "next/link";
