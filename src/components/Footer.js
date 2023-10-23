@@ -39,7 +39,7 @@ function Footer() {
         </div> */}
       </div>
       <p className="text-center text-white font-medium">
-        &copy; 2022 Company Ltd. All rights reservered.
+        &copy; {new Date().getFullYear()} All rights reservered.
       </p>
     </footer>
   );

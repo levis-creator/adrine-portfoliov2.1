@@ -170,5 +170,6 @@ export default Page;
 
 
 //TODO add skeleton  image
-//TODO add service and blog  page
 // TODO add a buttom image section in contentful
+//TODO SEO optimize the website
+//TODO properly edit the footer

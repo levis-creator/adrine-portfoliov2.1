@@ -166,7 +166,7 @@ const DiscoveryCall = () => {
   return (
     <>
       <Link
-        href={"https://calendly.com/adrinengikungu/adrine-s-discovery-callI"}
+        href={"https://calendly.com/adrinengikungu/adrine-s-discovery-call"}
       >
         <button className="uppercase border-2 border-black p-2">
           book a discovery call

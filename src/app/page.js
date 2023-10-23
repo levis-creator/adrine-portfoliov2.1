@@ -54,9 +54,9 @@ export default function Home() {
             />
             <div className="flex flex-col items-center basis-1/2">
               <div className="p-4 text-center space-y-4">
-                <h2 className="font-bold text-lg text-slate-800">
+                <h1 className="font-bold text-lg text-slate-800">
                   {homeData.homePageTitle}
-                </h2>
+                </h1>
                 <Markdown className="text-slate-700">
                   {homeData.intoduction}
                 </Markdown>
